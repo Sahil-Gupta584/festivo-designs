@@ -7,6 +7,7 @@ import EventCard from "@/components/EventCard";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { DatePickerWithRange } from "@/components/DatePickerWithRange";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DateRange } from "react-day-picker";
 
 const MOCK_EVENTS = [
   {
@@ -44,17 +45,14 @@ const CATEGORIES = [
 
 const EventsList = () => {
   const [selectedCategory, setSelectedCategory] = React.useState("All Categories");
-  const [dateRange, setDateRange] = React.useState({
-    from: undefined,
-    to: undefined,
-  });
+  const [dateRange, setDateRange] = React.useState<DateRange | undefined>(undefined);
 
   const filterEvents = (events: typeof MOCK_EVENTS, isPast: boolean) => {
     const now = new Date();
     return events.filter(event => {
       const eventDate = new Date(event.date);
       const matchesCategory = selectedCategory === "All Categories" || event.category === selectedCategory;
-      const matchesDate = dateRange.from && dateRange.to ? 
+      const matchesDate = dateRange?.from && dateRange?.to ? 
         eventDate >= dateRange.from && eventDate <= dateRange.to :
         true;
       const isPastEvent = eventDate < now;
