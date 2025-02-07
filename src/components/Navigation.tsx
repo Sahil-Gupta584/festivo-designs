@@ -1,21 +1,23 @@
+
 import { Bell, Calendar, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-8">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
             EventFlow
-          </h1>
+          </Link>
           <div className="hidden md:flex space-x-6">
-            <a href="#" className="text-gray-600 hover:text-primary transition-colors">
+            <Link to="/" className="text-gray-600 hover:text-primary transition-colors">
               Browse Events
-            </a>
-            <a href="#" className="text-gray-600 hover:text-primary transition-colors">
+            </Link>
+            <Link to="/create-event" className="text-gray-600 hover:text-primary transition-colors">
               Create Event
-            </a>
+            </Link>
           </div>
         </div>
         
